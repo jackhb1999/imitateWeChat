@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+    <LinearLayout
+        style="@style/LlVgStyle">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="账号:"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/et_account"
+            style="@style/EditStyle"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:hint="请输入用户名或手机号"
+             android:inputType="text"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/LlVgStyle">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="密码:"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/et_password"
+            style="@style/EditStyle"
+            android:hint="请输入密码"
+            android:inputType="numberPassword"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/LlVgStyle"
+        android:gravity="center">
+
+        <CheckBox
+            android:id="@+id/cb_remember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="记住密码"
+            />
+
+        <CheckBox
+            android:id="@+id/cb_auto_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:text="自动登录"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="登录"
+        style="@style/BtnStyle"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:text="还没有账号？"
+        android:layout_gravity="right"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:onClick="toRegister"
+        />
+
+</LinearLayout>

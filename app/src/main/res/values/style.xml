@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BtnStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:background">@drawable/btn_bg_selector</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+    </style>
+
+    <!-- 页面中LinearLayout样式 -->
+    <style name="LlVgStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginTop">40dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="EditStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">@drawable/edit_text_bg</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
+</resources>
