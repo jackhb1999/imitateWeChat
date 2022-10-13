@@ -22,7 +22,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_activity);
-        getActionBar().setTitle("注册");
+        // getActionBar().setTitle("注册");
 
         etAccount = findViewById(R.id.et_account);
         etPassword = findViewById(R.id.et_password);
@@ -45,10 +45,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             Toast.makeText(this,"用户名不能为空",Toast.LENGTH_LONG).show();
         }else if(TextUtils.isEmpty(passWord)){
             Toast.makeText(this,"密码不能为空",Toast.LENGTH_LONG).show();
-        }else if(passWord.equals(passWordConfirm)){
+        }else if(!passWord.equals(passWordConfirm)){
             Toast.makeText(this,"输入密码不一致",Toast.LENGTH_LONG).show();
         }else if(!cbAgree.isChecked()){
             Toast.makeText(this,"请同意用户协议",Toast.LENGTH_LONG).show();
+            return;
         }
 
         // 存储注册的用户名、密码
@@ -63,9 +64,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         Bundle bundle = new Bundle();
         bundle.putString("account",userName);
         bundle.putString("password",passWord);
+        bundle.putBoolean("isRemember",true);
         intent.putExtras(bundle);
         setResult(RESULT_OK,intent);
 
         Toast.makeText(this,"注册成功",Toast.LENGTH_LONG).show();
+        this.finish();
     }
 }

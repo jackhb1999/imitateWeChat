@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
@@ -26,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etAccount,etPassword;
     private CheckBox cbRemember,cbAutoLogin;
     private Button btnLogin;
+    private TextView tvToRegister;
 
     private String userName = "";
     private String passWord = "";
@@ -50,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.et_password);
         cbRemember = findViewById(R.id.cb_remember);
         cbAutoLogin = findViewById(R.id.cb_auto_login);
+        tvToRegister= findViewById(R.id.tv_toRegister);
     }
 
     private void initData() {
@@ -78,6 +81,27 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initEvent() {
+        ActivityResultLauncher<Intent> intentActivityResultLauncher =
+                registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                        result -> {
+                            Intent data = result.getData();
+                            if (result.getResultCode() == RESULT_OK && data != null) {
+                                Bundle bundle = data.getExtras();
+
+                                String account = bundle.getString("account","");
+                                String password = bundle.getString("password","");
+                                Boolean isRemember = bundle.getBoolean("isRemember");
+
+                                etAccount.setText(account);
+                                etPassword.setText(password);
+                                cbRemember.setChecked(isRemember);
+
+                                userName = account;
+                                passWord = password;
+                            }
+
+                        });
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,27 +139,17 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-    }
 
 
-    public void toRegister(View view) {
-        Intent intent = new Intent(this,RegisterActivity.class);
-        ActivityResultLauncher<Intent> intentActivityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            Intent data = result.getData();
-            if (result.getResultCode() == RESULT_OK && data != null) {
-                Bundle bundle = data.getExtras();
+        tvToRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
 
-                String account = bundle.getString("account","");
-                String password = bundle.getString("password","");
-
-                etAccount.setText(account);
-                etPassword.setText(password);
-
-                userName = account;
-                passWord = password;
+                intentActivityResultLauncher.launch(intent);
             }
         });
-        intentActivityResultLauncher.launch(intent);
     }
+
 
 }
